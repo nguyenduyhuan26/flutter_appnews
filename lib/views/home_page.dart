@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
             pageController.jumpToPage(index);
           });
         },
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.black54,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.card_travel),
