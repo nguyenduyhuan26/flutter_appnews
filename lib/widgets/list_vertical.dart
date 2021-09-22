@@ -24,19 +24,55 @@ class _ListVerticalState extends State<ListVertical> {
   static const String placeholderImg = 'assets/noImage.png';
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: CachedNetworkImage(
-        placeholder: (context, url) => Image.asset(placeholderImg),
-        imageUrl: widget.imageUrl,
-        height: MediaQuery.of(context).size.height * 0.4,
-        width: MediaQuery.of(context).size.width * 0.22,
-        alignment: Alignment.center,
-        fit: BoxFit.fill,
+    // return ListTile(
+    // leading: CachedNetworkImage(
+    //   placeholder: (context, url) => Image.asset(placeholderImg),
+    //   imageUrl: widget.imageUrl,
+    //   height: MediaQuery.of(context).size.height * 0.4,
+    //   width: MediaQuery.of(context).size.width * 0.22,
+    //   alignment: Alignment.center,
+    //   fit: BoxFit.fill,
+    //   ),
+    //   title: baseText(
+    //       text: utf8.decode(widget.title.runes.toList()),
+    //       fontWeight: FontWeight.bold),
+    //   subtitle: baseText(text: widget.description, maxLines: 3),
+    // );
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.2,
+      width: MediaQuery.of(context).size.width,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CachedNetworkImage(
+            placeholder: (context, url) => Image.asset(placeholderImg),
+            imageUrl: widget.imageUrl,
+            height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.width * 0.22,
+            alignment: Alignment.center,
+            fit: BoxFit.fill,
+          ),
+          SizedBox(
+            width: 8,
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.7,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                baseText(
+                    text: utf8.decode(widget.title.runes.toList()),
+                    fontWeight: FontWeight.bold),
+                baseText(text: widget.description, maxLines: 3),
+              ],
+            ),
+          )
+        ],
       ),
-      title: baseText(
-          text: utf8.decode(widget.title.runes.toList()),
-          fontWeight: FontWeight.bold),
-      subtitle: baseText(text: widget.description, maxLines: 3),
     );
   }
 
