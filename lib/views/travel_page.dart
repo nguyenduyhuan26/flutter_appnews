@@ -33,7 +33,7 @@ class _TravelPageState extends State<TravelPage> {
         appBar: AppBar(title: Text("Du Lịch")),
         body: SafeArea(
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 8),
+            margin: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             child: context.watch<News>().feed == null
                 ? Center(
                     child: CircularProgressIndicator(),
