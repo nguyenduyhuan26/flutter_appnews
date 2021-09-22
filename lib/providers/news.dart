@@ -29,14 +29,11 @@ class News with ChangeNotifier, DiagnosticableTreeMixin {
   load(String url) async {
     print("load rss");
 
-    updateTitle("Loading Feed...");
     await loadFeed(url).then((result) {
-      if (null == result || result.toString().isEmpty) {
-        updateTitle("Error Loading Feed.");
-      }
+      if (null == result || result.toString().isEmpty) {}
       _feed = result;
-      _items = result.items;
-      print(items[3].link);
+      // _items = result.items;
+      //print(items[3].link);
       print("load rss done ${feed.items[0].link ?? "abc"}");
       notifyListeners();
 
@@ -45,7 +42,7 @@ class News with ChangeNotifier, DiagnosticableTreeMixin {
   }
 
   Future<RssFeed> loadFeed(String url) async {
-    print("loading......");
+    print("loading......feed");
 
     try {
       final client = http.Client();
@@ -55,14 +52,6 @@ class News with ChangeNotifier, DiagnosticableTreeMixin {
       //
     }
     return null;
-  }
-
-  updateTitle(title) {
-    title = title;
-  }
-
-  isFeedEmpty() {
-    return null == feed || null == feed.items;
   }
 
   String getImage({String description, String link}) {

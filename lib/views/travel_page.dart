@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appnews/providers/news.dart';
-import 'package:flutter_appnews/widgets/news_item.dart';
+import 'package:flutter_appnews/widgets/list_vertical.dart';
 import 'package:provider/provider.dart';
-import 'package:webfeed/webfeed.dart';
 
+// view dọc
 class TravelPage extends StatefulWidget {
   const TravelPage({Key key}) : super(key: key);
 
@@ -15,9 +15,8 @@ GlobalKey<RefreshIndicatorState> refreshKey =
     GlobalKey<RefreshIndicatorState>();
 
 class _TravelPageState extends State<TravelPage> {
-  NewItem newItem = NewItem();
+  ListVertical newItem;
   String url = "https://vnexpress.net/rss/du-lich.rss";
-  RssFeed feed;
   @override
   void initState() {
     super.initState();
@@ -31,9 +30,10 @@ class _TravelPageState extends State<TravelPage> {
         ChangeNotifierProvider(create: (_) => News()),
       ],
       child: Scaffold(
-        appBar: AppBar(title: Text("News")),
+        appBar: AppBar(title: Text("Du Lịch")),
         body: SafeArea(
           child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 8),
             child: context.watch<News>().feed == null
                 ? Center(
                     child: CircularProgressIndicator(),
@@ -43,14 +43,21 @@ class _TravelPageState extends State<TravelPage> {
                     key: refreshKey,
                     child: ListView.builder(
                       itemCount: context.watch<News>().feed.items.length,
-                      itemBuilder: (BuildContext context, int index) {
+                      itemBuilder: (BuildContext buildContext, int index) {
                         var item = context.watch<News>().feed.items[index];
-
+                        newItem = ListVertical(
+                          title: item.title,
+                          description: context.read<News>().getDescription(
+                              description: item.description, link: item.link),
+                          imageUrl: context.read<News>().getImage(
+                              description: item.description, link: item.link),
+                        );
                         return Center(
-                          child: Column(
-                            children: [
-                              Text("{context.watch<News>().items[index].link}"),
-                            ],
+                          child: GestureDetector(
+                            onTap: () {
+                              context.read<News>().openFeed(item.link);
+                            },
+                            child: newItem,
                           ),
                         );
                       },
