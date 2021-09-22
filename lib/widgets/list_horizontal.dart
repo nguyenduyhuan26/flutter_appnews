@@ -43,7 +43,7 @@ class _ListHorizontalState extends State<ListHorizontal> {
                 placeholder: (context, url) => Image.asset(placeholderImg),
                 imageUrl: widget.imageUrl,
                 height: MediaQuery.of(context).size.height * 0.4 * widget.fix,
-                width: MediaQuery.of(context).size.width * 0.7 * widget.fix,
+                width: MediaQuery.of(context).size.width * 0.8 * widget.fix,
                 alignment: Alignment.center,
                 fit: BoxFit.fill,
               ),

@@ -63,34 +63,36 @@ class _SciencePageState extends State<SciencePage> {
     return RefreshIndicator(
       onRefresh: () => context.read<News>().load(url),
       key: refreshKey,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.38,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: context.watch<News>().feed.items.length,
-          itemBuilder: (BuildContext buildContext, int index) {
-            var item = context.watch<News>().feed.items[index];
+      child: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.38,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: context.watch<News>().feed.items.length,
+            itemBuilder: (BuildContext buildContext, int index) {
+              var item = context.watch<News>().feed.items[index];
 
-            listHorizontal = ListHorizontal(
-              fix: 0.33,
-              title: item.title,
-              description: context.read<News>().getDescription(
-                  description: item.description, link: item.link),
-              imageUrl: context
-                  .read<News>()
-                  .getImage(description: item.description, link: item.link),
-            );
-            return index % 2 == 0
-                ? Center(
-                    child: GestureDetector(
-                        onTap: () {
-                          context.read<News>().openFeed(item.link);
-                        },
-                        child: listHorizontal),
-                  )
-                : Container();
-          },
+              listHorizontal = ListHorizontal(
+                fix: 0.36,
+                title: item.title,
+                description: context.read<News>().getDescription(
+                    description: item.description, link: item.link),
+                imageUrl: context
+                    .read<News>()
+                    .getImage(description: item.description, link: item.link),
+              );
+              return index % 2 == 0
+                  ? Center(
+                      child: GestureDetector(
+                          onTap: () {
+                            context.read<News>().openFeed(item.link);
+                          },
+                          child: listHorizontal),
+                    )
+                  : Container();
+            },
+          ),
         ),
       ),
     );

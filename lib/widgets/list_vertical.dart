@@ -50,6 +50,7 @@ class _ListVerticalState extends State<ListVertical> {
       child: Text(
         "$text",
         style: TextStyle(
+          overflow: TextOverflow.ellipsis,
           color: color,
           fontSize: sizeText,
           fontWeight: fontWeight,
