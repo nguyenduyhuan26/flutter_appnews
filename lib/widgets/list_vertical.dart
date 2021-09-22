@@ -44,7 +44,7 @@ class _ListVerticalState extends State<ListVertical> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CachedNetworkImage(
             placeholder: (context, url) => Image.asset(placeholderImg),
@@ -58,11 +58,12 @@ class _ListVerticalState extends State<ListVertical> {
             width: 8,
           ),
           Container(
+            height: MediaQuery.of(context).size.height * 0.2,
             width: MediaQuery.of(context).size.width * 0.7,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 baseText(
                     text: utf8.decode(widget.title.runes.toList()),
