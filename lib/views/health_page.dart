@@ -53,6 +53,8 @@ class _HealthPageState extends State<HealthPage> {
                               description: item.description, link: item.link),
                         );
                         return Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
                           child: GestureDetector(
                             onTap: () {
                               context.read<News>().openFeed(item.link);
