@@ -40,13 +40,16 @@ class _SciencePageState extends State<SciencePage> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.95,
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: context.watch<News>().feed == null
                   ? Center(
                       child: CircularProgressIndicator(),
                     )
                   : Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         list1(),
                         list2(),
@@ -65,7 +68,7 @@ class _SciencePageState extends State<SciencePage> {
       key: refreshKey,
       child: SingleChildScrollView(
         child: Container(
-          width: MediaQuery.of(context).size.width,
+          width: MediaQuery.of(context).size.width * 0.9,
           height: MediaQuery.of(context).size.height * 0.38,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -101,7 +104,7 @@ class _SciencePageState extends State<SciencePage> {
   Widget list2() {
     return SingleChildScrollView(
       child: Container(
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.43,
         child: ListView.builder(
           scrollDirection: Axis.vertical,

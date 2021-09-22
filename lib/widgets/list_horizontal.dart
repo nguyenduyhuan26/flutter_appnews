@@ -28,7 +28,7 @@ class _ListHorizontalState extends State<ListHorizontal> {
       padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
         child: Container(
-          width: MediaQuery.of(context).size.width * 0.95,
+          width: MediaQuery.of(context).size.width * 0.9,
           height: MediaQuery.of(context).size.height,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

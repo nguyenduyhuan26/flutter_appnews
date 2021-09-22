@@ -40,7 +40,7 @@ class _ListVerticalState extends State<ListVertical> {
     // );
     return Container(
       height: MediaQuery.of(context).size.height * 0.2,
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width * 9,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -59,7 +59,7 @@ class _ListVerticalState extends State<ListVertical> {
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.2,
-            width: MediaQuery.of(context).size.width * 0.7,
+            width: MediaQuery.of(context).size.width * 0.65,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
